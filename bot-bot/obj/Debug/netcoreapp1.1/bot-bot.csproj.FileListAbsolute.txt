@@ -1,0 +1,8 @@
+/home/panagiotis/Documents/C#/bot-bot/bin/Debug/netcoreapp1.1/bot-bot.deps.json
+/home/panagiotis/Documents/C#/bot-bot/bin/Debug/netcoreapp1.1/bot-bot.runtimeconfig.json
+/home/panagiotis/Documents/C#/bot-bot/bin/Debug/netcoreapp1.1/bot-bot.runtimeconfig.dev.json
+/home/panagiotis/Documents/C#/bot-bot/bin/Debug/netcoreapp1.1/bot-bot.dll
+/home/panagiotis/Documents/C#/bot-bot/bin/Debug/netcoreapp1.1/bot-bot.pdb
+/home/panagiotis/Documents/C#/bot-bot/obj/Debug/netcoreapp1.1/bot-bot.AssemblyInfo.cs
+/home/panagiotis/Documents/C#/bot-bot/obj/Debug/netcoreapp1.1/bot-bot.dll
+/home/panagiotis/Documents/C#/bot-bot/obj/Debug/netcoreapp1.1/bot-bot.pdb
