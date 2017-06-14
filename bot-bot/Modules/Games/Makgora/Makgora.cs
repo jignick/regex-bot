@@ -29,13 +29,10 @@ namespace bot_bot.Modules.Games.Makgora
 
                 var choice = _rng.Next(0, 2);
                 if (choice == 0)
-                {
                     _whoPlays = _orc.Name;
-                }
                 else
-                {
                     _whoPlays = _felOrc.Name;
-                }
+                
 
                 var embedMessage = new EmbedBuilder();
 
@@ -49,13 +46,9 @@ namespace bot_bot.Modules.Games.Makgora
 
             }
             else if (_orc.Name == _felOrc.Name)
-            {
                 await ReplyAsync($"{_orc.Name}, you can't declare a Mak'gora on yourself. :thonk:");
-            }
             else
-            {
                 await ReplyAsync($"{_orc.Name}, there is currently another Mak'gora in progress.");
-            }
         }
 
         [Command("Surrender")]
@@ -130,7 +123,6 @@ namespace bot_bot.Modules.Games.Makgora
 
                     if (_orc.Health > 0)
                     {
-
                         embedMessage.Description = ($"{_felOrc.Name}'s katsavidi went through {_orc.Name}.\n" +
                             $"{_orc.Name} has {_orc.Health} health.\n" +
                             $"{_orc.Name}, your turn!");
