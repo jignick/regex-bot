@@ -7853,16 +7853,16 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/panagiotis/Documents/C#/bot-bot/bot-bot.csproj",
+      "projectUniqueName": "/home/panagiotis/Documents/C#/regex-bot/bot-bot/bot-bot.csproj",
       "projectName": "bot-bot",
-      "projectPath": "/home/panagiotis/Documents/C#/bot-bot/bot-bot.csproj",
-      "outputPath": "/home/panagiotis/Documents/C#/bot-bot/obj/",
+      "projectPath": "/home/panagiotis/Documents/C#/regex-bot/bot-bot/bot-bot.csproj",
+      "outputPath": "/home/panagiotis/Documents/C#/regex-bot/bot-bot/obj/",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
       "files": {
-        "lib/netcoreapp1.1/bot-bot.dll": "/home/panagiotis/Documents/C#/bot-bot/bin/placeholder/netcoreapp1.1/bot-bot.dll"
+        "lib/netcoreapp1.1/bot-bot.dll": "/home/panagiotis/Documents/C#/regex-bot/bot-bot/bin/placeholder/netcoreapp1.1/bot-bot.dll"
       },
       "frameworks": {
         "netcoreapp1.1": {
