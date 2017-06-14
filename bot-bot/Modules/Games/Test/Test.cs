@@ -6,12 +6,12 @@ namespace bot_bot.Modules
 {
     public class Test : ModuleBase<SocketCommandContext>
     {
-        [Command("Test")]
+        [Command("Echo")]
+        [Alias("echo")]
+        [Summary("Echoes the string after the command")]
         public async Task test(string message)
         {
             await Context.Channel.SendMessageAsync(message);
-            
-            Console.WriteLine(Context.User.Username + ": " + message);
         }
     }
 }

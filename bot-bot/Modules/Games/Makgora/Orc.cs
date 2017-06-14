@@ -7,28 +7,21 @@ namespace bot_bot.Modules.Games.Makgora
 {
     public class Orc
     {
-        /*
-        private string _name;
-        private BattlePhase _phase;
-        private bool _turn;
-        */
+        private Random _rng;
 
-        public string Name { get; set; }
-        public BattlePhase Phase { get; set; }
-        public bool Turn { get; set; }
-        public int Health { get; set;} 
+        public string Name { get; private set; }
+        public int Health { get; private set; } 
 
-        public Orc(string name, BattlePhase phase, bool turn)
+        public Orc(string name)
         {
             Name = name;
-            Phase = phase;
-            Turn = turn;
             Health = 100;
         }
 
         public void Attack(Orc orc)
         {
-            
+            _rng = new Random();
+            orc.Health -= _rng.Next(10, 26);
         }
     }
 }

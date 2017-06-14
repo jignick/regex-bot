@@ -29,7 +29,7 @@ namespace bot_bot
             var context = new SocketCommandContext(_client, message);
             var argPos = 0;
 
-            if (message.HasCharPrefix('>', ref argPos))
+            if (message.HasCharPrefix('.', ref argPos))
             {
                 var result = await _service.ExecuteAsync(context, argPos);
 

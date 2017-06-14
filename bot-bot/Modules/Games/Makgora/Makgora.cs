@@ -8,43 +8,40 @@ namespace bot_bot.Modules.Games.Makgora
 {
     public class Makgora : ModuleBase
     {
-        private static bool _isDuelActive = false;
-        private Orc _orc;
-        private Orc _felOrc;
-
+        private static bool _isDuelActive;
+        private static Orc _orc;
+        private static Orc _felOrc;
+        private static Random _rng;
+        private static string _whoPlays;
+        
         [Command("Makgora")]
         [Alias("makgora")]
         [Summary("Starts a new Mak'gora duel.")]
         public async Task makgora(IUser user)
         {
-            // (Panagiotis):TODO battlephase and turn should be chosen randomly
-            _orc = new Orc(Context.User.Mention, BattlePhase.Attack, true);
-            _felOrc = new Orc(user.Mention, BattlePhase.Defend, false);
+            _orc = new Orc(Context.User.Mention);
+            _felOrc = new Orc(user.Mention);    
 
             if (_orc.Name != _felOrc.Name && _isDuelActive == false)
             {
                 _isDuelActive = true;
+                _rng = new Random();
 
-                if (_orc.Turn)
+                var choice = _rng.Next(0, 2);
+                if (choice == 0)
                 {
-                    _orc.Phase = BattlePhase.Attack;
-                    _orc.Turn = true;
-                    _felOrc.Phase = BattlePhase.Defend;
+                    _whoPlays = _orc.Name;
                 }
                 else
                 {
-                    _felOrc.Phase = BattlePhase.Attack;
-                    _felOrc.Turn = true;
-                    _orc.Phase = BattlePhase.Defend;
+                    _whoPlays = _felOrc.Name;
                 }
 
-                // o Embed builder dinei dunatothta na peirakseis to format tou message pou tha paei sto discord
-                // Remove hardcoded turns
                 var embedMessage = new EmbedBuilder();
 
-                embedMessage.WithColor(new Color(255, 255, 255));
+                embedMessage.Color = new Color(255, 255, 255);
                 embedMessage.Description = ($"A Mak'gora duel just started between, {_orc.Name} and {_felOrc.Name}!\n" +
-                    $"{_orc.Name} goes first!\n" +
+                    $"{_whoPlays} goes first!\n" +
                     $"{_orc.Name} has {_orc.Health} health.\n" +
                     $"{_felOrc.Name} has {_felOrc.Health} health.\n");
 
@@ -66,16 +63,20 @@ namespace bot_bot.Modules.Games.Makgora
         [Summary("Forfeits the duel.")]
         public async Task surrender()
         {
-            if (_isDuelActive == true && (Context.User.Mention == _orc.Name || Context.User.Mention == _felOrc.Name)) // one () less?
+            if (_isDuelActive && (Context.User.Mention == _orc.Name || Context.User.Mention == _felOrc.Name)) // one () less?
             {
-                await ReplyAsync("The fight has stopped");
-                _isDuelActive = false;
+                var embedMessage = new EmbedBuilder();
 
-                
+                embedMessage.Description = ($"The duel has stopped.");  
+                await ReplyAsync("", false, embedMessage);
+                _isDuelActive = false;
             }
             else 
             {
+                var embedMessage = new EmbedBuilder();
 
+                embedMessage.Description = ($"You are not fighting.");
+                await ReplyAsync("", false, embedMessage);
             }
         }
 
@@ -84,7 +85,75 @@ namespace bot_bot.Modules.Games.Makgora
         [Summary("Performs a katsavidi attack while in a Mak'gora duel.")]
         public async Task katsavidi()
         {
+            if (_isDuelActive && (Context.User.Mention == _orc.Name || Context.User.Mention == _felOrc.Name))
+            {
+                if (!(Context.User.Mention == _whoPlays))
+                {
+                    var embedMessage = new EmbedBuilder();
+                    embedMessage.Description = ($"It's not your turn {Context.User.Mention}.");                    
 
+                    await ReplyAsync("", false, embedMessage);      
+                    return;              
+                }
+
+                if (Context.User.Mention != _felOrc.Name)
+                {
+                    var embedMessage = new EmbedBuilder();
+
+                    _orc.Attack(_felOrc);
+                    _whoPlays = _felOrc.Name;
+
+                    if (_felOrc.Health > 0)
+                    {    
+                        embedMessage.Description = ($"{_orc.Name}'s katsavidi went through {_felOrc.Name}.\n" +
+                            $"{_felOrc.Name} has {_felOrc.Health} health.\n" +
+                            $"{_felOrc.Name}, your turn!");
+
+                            await ReplyAsync("", false, embedMessage);
+                    }
+                    else
+                    {
+                        embedMessage.Description = ($"{_felOrc.Name} has died. [*]\n" +
+                            $"{_orc.Name} is victorious!");
+
+                        _isDuelActive = false;
+
+                        await ReplyAsync("", false, embedMessage);
+                    }
+                }
+                else if(Context.User.Mention == _felOrc.Name)
+                {
+                    var embedMessage = new EmbedBuilder();
+                    
+                    _felOrc.Attack(_orc);
+                    _whoPlays = _orc.Name;
+
+                    if (_orc.Health > 0)
+                    {
+
+                        embedMessage.Description = ($"{_felOrc.Name}'s katsavidi went through {_orc.Name}.\n" +
+                            $"{_orc.Name} has {_orc.Health} health.\n" +
+                            $"{_orc.Name}, your turn!");
+
+                        await ReplyAsync("", false, embedMessage);
+                    }
+                    else
+                    {
+                        embedMessage.Description = ($"{_orc.Name} has died. [*]\n" +
+                            $"{_felOrc.Name} is victorious!");
+
+                        _isDuelActive = false;
+                        await ReplyAsync("", false, embedMessage);
+                    }
+                }
+            }
+            else
+            {
+                var embedMessage = new EmbedBuilder();
+
+                embedMessage.Description = ($"You are not fighting?");
+                await ReplyAsync("", false, embedMessage);
+            }
         }
     }
 }
