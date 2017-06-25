@@ -13,6 +13,7 @@ namespace bot_bot
         private DiscordSocketClient _client;
         private CommandHandler _handler;
         private LogHandler _logger;
+        private InsultBots _insulter;
 
         public async Task StartAsync()
         {
@@ -24,8 +25,10 @@ namespace bot_bot
             Console.WriteLine("Connecting to server");
             await _client.LoginAsync(TokenType.Bot, _token);
             Console.WriteLine("Connected");
+
             _handler = new CommandHandler(_client);
             _logger = new LogHandler(_client);
+            _insulter = new InsultBots(_client);
 
             await _client.StartAsync();
             await Task.Delay(-1);
