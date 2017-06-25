@@ -12,16 +12,20 @@ namespace bot_bot
 
         private DiscordSocketClient _client;
         private CommandHandler _handler;
+        private LogHandler _logger;
 
         public async Task StartAsync()
         {
+            Console.WriteLine("[Regex Bot - github.com/jignick/regex-bot]");
             _client = new DiscordSocketClient();
 
-            var _token = "API_KEY";
-            
-            await _client.LoginAsync(TokenType.Bot, _token);
+            var _token = "TOKEN";
 
+            Console.WriteLine("Connecting to server");
+            await _client.LoginAsync(TokenType.Bot, _token);
+            Console.WriteLine("Connected");
             _handler = new CommandHandler(_client);
+            _logger = new LogHandler(_client);
 
             await _client.StartAsync();
             await Task.Delay(-1);
