@@ -32,7 +32,8 @@ namespace bot_bot
             if (message.HasCharPrefix('.', ref argPos))
             {
                 var result = await _service.ExecuteAsync(context, argPos);
-
+                await sockMsg.DeleteAsync();
+                
                 if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
                 {
                     await context.Channel.SendMessageAsync(result.ErrorReason);
