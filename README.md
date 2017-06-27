@@ -1,1 +1,1 @@
-<h2>Discord bot written in C# using .NET Core</h2>
+<h1>Discord bot written in C# using Discord.NET</h1>
