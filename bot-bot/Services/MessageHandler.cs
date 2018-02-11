@@ -24,11 +24,6 @@ namespace bot_bot
                 return;
             }
 
-            if (socketMessage.Author.IsBot)
-            {
-                await socketMessage.DeleteAsync();
-            }
-
             if (message.Content.StartsWith("!")) 
             {
                 await message.DeleteAsync();
@@ -38,6 +33,7 @@ namespace bot_bot
             {
                 await _client.GetGuild(152690567720075264).GetTextChannel(404659774043717632).SendMessageAsync($"{message.Content}");            
                 await message.DeleteAsync();     
+                await socketMessage.DeleteAsync();
             }
 
             await Task.CompletedTask;
