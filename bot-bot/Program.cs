@@ -21,7 +21,7 @@ namespace bot_bot
             Console.WriteLine("[Regex Bot - github.com/jignick/regex-bot]");
             _client = new DiscordSocketClient();
 
-            var _token = "TOKEN";
+            var _token = "";
 
             Console.WriteLine("Connecting to server");
             await _client.LoginAsync(TokenType.Bot, _token);
