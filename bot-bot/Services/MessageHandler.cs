@@ -24,6 +24,11 @@ namespace bot_bot
                 return;
             }
 
+            if (socketMessage.Author.IsBot)
+            {
+                await socketMessage.DeleteAsync();
+            }
+
             if (message.Content.StartsWith("!")) 
             {
                 await message.DeleteAsync();
