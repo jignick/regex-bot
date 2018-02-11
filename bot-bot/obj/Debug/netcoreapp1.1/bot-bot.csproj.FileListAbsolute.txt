@@ -14,3 +14,13 @@
 /home/panagiotis/Documents/C#/regex-bot/bot-bot/obj/Debug/netcoreapp1.1/bot-bot.AssemblyInfo.cs
 /home/panagiotis/Documents/C#/regex-bot/bot-bot/obj/Debug/netcoreapp1.1/bot-bot.dll
 /home/panagiotis/Documents/C#/regex-bot/bot-bot/obj/Debug/netcoreapp1.1/bot-bot.pdb
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\bin\Debug\netcoreapp1.1\bot-bot.deps.json
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\bin\Debug\netcoreapp1.1\bot-bot.runtimeconfig.json
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\bin\Debug\netcoreapp1.1\bot-bot.runtimeconfig.dev.json
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\bin\Debug\netcoreapp1.1\bot-bot.dll
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\bin\Debug\netcoreapp1.1\bot-bot.pdb
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\obj\Debug\netcoreapp1.1\bot-bot.csproj.CoreCompileInputs.cache
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\obj\Debug\netcoreapp1.1\bot-bot.AssemblyInfoInputs.cache
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\obj\Debug\netcoreapp1.1\bot-bot.AssemblyInfo.cs
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\obj\Debug\netcoreapp1.1\bot-bot.dll
+C:\Users\Panagiotis\Desktop\regex-bot\bot-bot\obj\Debug\netcoreapp1.1\bot-bot.pdb

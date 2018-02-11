@@ -11,16 +11,17 @@ namespace bot_bot
             => new Program().StartAsync().GetAwaiter().GetResult();
 
         private DiscordSocketClient _client;
+
         private CommandHandler _handler;
         private LogHandler _logger;
-        private InsultBots _insulter;
+        private MessageCleaner _cleaner;
 
         public async Task StartAsync()
         {
             Console.WriteLine("[Regex Bot - github.com/jignick/regex-bot]");
             _client = new DiscordSocketClient();
 
-            var _token = "TOKEN";
+            var _token = "";
 
             Console.WriteLine("Connecting to server");
             await _client.LoginAsync(TokenType.Bot, _token);
@@ -28,7 +29,7 @@ namespace bot_bot
 
             _handler = new CommandHandler(_client);
             _logger = new LogHandler(_client);
-            _insulter = new InsultBots(_client);
+            _cleaner = new MessageCleaner(_client);
 
             await _client.StartAsync();
             await Task.Delay(-1);

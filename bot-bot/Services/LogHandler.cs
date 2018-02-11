@@ -25,7 +25,9 @@ namespace bot_bot
             var message = sockMessage as SocketUserMessage;
 
             if (message == null)
+            {
                 return;
+            }
 
             var messageToLog = $"[{message.Author}]-[{DateTime.Now}]: {message}";
 
@@ -37,6 +39,7 @@ namespace bot_bot
                     Console.WriteLine(messageToLog);
                 }
             }
+
             await Task.CompletedTask;
         }
     }

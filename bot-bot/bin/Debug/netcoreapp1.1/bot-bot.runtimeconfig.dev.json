@@ -1,7 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/panagiotis/.nuget/packages"
+      "C:\\Users\\Panagiotis\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Panagiotis\\.nuget\\packages"
     ]
   }
 }
